@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#F3F6F8">
+<title>BrainSim</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <h1 class="wordmark">Brain<b>Sim</b></h1>
+    <button class="ds-pill" id="dsPill" type="button" aria-label="Open data settings"><span class="dot"></span><span id="dsPillText">Loading market…</span></button>
+  </header>
+
+  <main id="main">
+    <!-- SIMULATE -->
+    <section class="view active" id="view-simulate" aria-label="Simulate">
+      <div class="page-sheet editor-sheet">
+        <div class="editor">
+          <div class="gutter" id="gutter" aria-hidden="true">1</div>
+          <textarea id="expr" rows="6" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"
+            aria-label="Alpha expression" placeholder="rank(-ts_delta(close, 5))"></textarea>
+        </div>
+      </div>
+      <div class="under-editor">
+        <div class="status-line" id="status"></div>
+        <div class="editor-tools">
+          <button class="icon-btn" id="btnExamples" type="button" aria-label="Example alphas" title="Example alphas">
+            <svg viewBox="0 0 24 24"><path d="M4 5h11M4 10h16M4 15h9M4 20h13"/></svg>
+          </button>
+          <button class="icon-btn" id="btnClear" type="button" aria-label="Clear expression" title="Clear">
+            <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="chips" id="chips" aria-label="Insert fields and operators"></div>
+
+      <h3 class="sec">Simulation settings</h3>
+      <div class="settings" id="settings"></div>
+      <p class="note" id="settingsNote"></p>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="view" id="view-results" aria-label="Results"></section>
+
+    <!-- ALPHAS -->
+    <section class="view" id="view-alphas" aria-label="My alphas"></section>
+
+    <!-- DATA -->
+    <section class="view" id="view-data" aria-label="Market data"></section>
+
+    <!-- LEARN -->
+    <section class="view" id="view-learn" aria-label="Reference"></section>
+  </main>
+
+  <div class="sim-dock" id="simDock">
+    <button class="btn primary" id="btnSimulate" type="button">Simulate</button>
+  </div>
+
+  <nav class="tabbar" id="tabbar">
+    <button type="button" data-tab="simulate" class="on">
+      <svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg>Simulate
+    </button>
+    <button type="button" data-tab="results">
+      <svg viewBox="0 0 24 24"><path d="M3 20h18M4 16l5-6 4 3 7-9"/></svg>Results<span class="badge hidden" id="resBadge"></span>
+    </button>
+    <button type="button" data-tab="alphas">
+      <svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>My alphas
+    </button>
+    <button type="button" data-tab="data">
+      <svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Data
+    </button>
+    <button type="button" data-tab="learn">
+      <svg viewBox="0 0 24 24"><path d="M4 4.5h6a2 2 0 012 2V20a1.5 1.5 0 00-1.5-1.5H4zM20 4.5h-6a2 2 0 00-2 2V20a1.5 1.5 0 011.5-1.5H20z"/></svg>Learn
+    </button>
+  </nav>
+</div>
+
+<div class="overlay" id="overlay">
+  <svg class="pen" viewBox="0 0 120 46" aria-hidden="true"><path d="M4 40 L18 34 L28 37 L40 25 L52 28 L63 18 L76 21 L88 10 L100 13 L116 4"/></svg>
+  <div class="msg" id="overlayMsg">Preparing the market…</div>
+  <div class="sub" id="overlaySub"></div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="fileInput" accept=".csv,text/csv,text/plain,text/comma-separated-values" class="hidden">
+
+<script src="engine.js"></script>
+<script src="data.js"></script>
+<script src="chart.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

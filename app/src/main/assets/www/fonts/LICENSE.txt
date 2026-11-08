@@ -1,0 +1,6 @@
+Latin Modern fonts (lmroman10, lmmono10, lmsansquot8)
+Copyright 2003--2021 by B. Jackowski and J.M. Nowacki (on behalf of TeX Users Groups).
+Based on Donald E. Knuth's Computer Modern fonts.
+Released under the GUST Font License (an instance of the LaTeX Project Public License).
+http://www.gust.org.pl/projects/e-foundry/licenses
+The fonts are redistributed unmodified.
